@@ -1,0 +1,150 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>My Flix</title>
+    </head>
+    <body>
+      <h1>MyFlix Objective</h1>
+      <p>
+        To build the server-side component of a “movies” web application. The web
+        application will provide users with access to information about different
+        movies, directors, and genres. Users will be able to sign up, update their
+        personal information, and create a list of their favorite movies.
+      </p>
+
+    <style>
+      table,th,td {
+        border: 1px solid black;
+      }
+    </style>
+
+    <table style="width:100%">
+      <thread>
+        <tr>
+          <th>Business Logic</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+      </tr>
+      </thread>
+
+      <tr>
+         <td>Returns a list of all movies to the user</td>
+         <td>/movies</td>
+         <td>READ</td>
+         <td>None</td>
+         <td>A Json array holding data about all movies from the list</td>
+       </tr>
+
+       <tr>
+         <td>Returns data about a single movie by title</td>
+         <td>/movies/:title</td>
+         <td>READ</td>
+         <td>None</td>
+         <td>JSON object holding data about a single movie:
+           <br>
+            Example:{
+            title: 'Die Hard',
+            genre: 'action',
+            releaseYear: '1988',
+            academyAwards: '4',
+            director: {
+              name: 'John McTiernan',
+              birthYear: '1951',
+              birthPlace: 'Albany, NY',
+              education: 'American Film Institute',
+              deathYear: 'n/a'
+            }
+         </td>
+      </tr>
+
+        <tr>
+          <td>Retruns genre description by movie title (e.g., "Crime")</td>
+          <td>/movies/genre/:name</td>
+          <td>READ</td>
+          <td>None</td>
+          <td>Returns an array of all JSON movie objects within the database that
+            includes the genre passed in the url parameter</td>
+       </tr>
+
+        <tr>
+           <td>Returns data about the movie director (e.g., "Martin Scorsese")</td>
+           <td>/movies/director/:name</td>
+           <td>READ</td>
+           <td>None</td>
+           <td>Returns a JSON object containing data of the director based on the
+            movie name that was passed into the url parameter</td>
+        </tr>
+
+        <tr>
+           <td>Allows new users to register</td>
+           <td>/users</td>
+           <td>CREATE</td>
+           <td>None</td>
+           <td>A JSON object holding data about a new user
+             <br>
+             Example:{
+               Username: "alexp",
+               Password: "1234",
+               Email: "alexp@gmail.com",
+               Birthday: "10/01/1966"
+             }
+           </td>
+        </tr>
+
+        <tr>
+           <td>Returns data of all users</td>
+           <td>/users</td>
+           <td>READ</td>
+           <td>None</td>
+           <td> A JSON object hodling data of each user</td>
+
+          <tr>
+            <td>Allows users to update their info by username</td>
+            <td>/users/:username</td>
+            <td>UPDATE</td>
+            <td>A Json object holding data about the updated user info</td>
+            <td>Returns a message confirming that the user info was successfully updated
+              <br>
+              Example: "Your username and password were successfully updated."
+            </td>
+          </tr>
+
+          <tr>
+            <td>Allows users to add a movie to their profile</td>
+            <td>/users/:username/movies/:MovieID</td>
+            <td>CREATE</td>
+            <td>A JSON object hodling data about a single movie</td>
+            <td>Returns a message confirming the user successfully added a new movie to their profile.
+              <br>
+              Example: "Scarface was successfully added to your profile."
+            </td>
+          </tr>
+
+          <tr>
+             <td>Allow users to remove a movie from their profile</td>
+             <td>/users/:username/movies/:MovieID</td>
+             <td>DELETE</td>
+             <td>None</td>
+             <td>Returns a message confirming the movie was successfully deleted from the user's profile.
+              <br>
+              Example: "Scarface was successfully removed from your profile."
+            </td>
+          </tr>
+
+          <tr>
+             <td>Allow existing users to disregiter</td>
+             <td>/users/:username</td>
+             <td>DELETE</td>
+             <td>None</td>
+             <td>Returns a message confirming the user successfully deleted their account
+              <br>
+              Example: "Your account was successfully deleted."
+            </td>
+          </tr>
+    </table>
+  </body>
+</html>
