@@ -59,6 +59,7 @@ let allowedOrigins = [
   "http://localhost:4200",
   "http://localhost:3000",
   "https://myflix-movietime.herokuapp.com",
+  "https://myflix-movietime.netlify.app/",
   "https://rusevaivelina.github.io",
   "*",
 ];
