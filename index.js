@@ -62,6 +62,7 @@ let allowedOrigins = [
   "https://myflix-movietime.netlify.app",
   "https://rusevaivelina.github.io",
   "*",
+ "https://myflix-movietime.netlify.app/register"
 ];
 
 app.use(
