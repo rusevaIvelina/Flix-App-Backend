@@ -27,6 +27,8 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 const app = express();
+const cors = require('cors');
+app.use(cors());
 
 const { CONNECTION_URI } = require("./config");
 
@@ -45,6 +47,7 @@ mongoose
     console.log("error connecting to MongoDB:", error.message);
   }); //Connecting to database
 
+
 //Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,33 +55,33 @@ app.use(morgan("common"));
 app.use(express.static("public"));
 
 //Import cors - Middleware for controlling which domains have access
-const cors = require("cors");
-let allowedOrigins = [
-  "http://localhost:8080",
-  "http://localhost:1234",
-  "http://localhost:4200",
-  "http://localhost:3000",
-  "https://myflix-movietime.herokuapp.com",
-  "https://myflix-movietime.netlify.app",
-  "https://rusevaivelina.github.io",
-  "*",
-];
+// const cors = require("cors");
+// let allowedOrigins = [
+//   "http://localhost:8080",
+//   "http://localhost:1234",
+//   "http://localhost:4200",
+//   "http://localhost:3000",
+//   "https://myflix-movietime.herokuapp.com",
+//   "https://myflix-movietime.netlify.app",
+//   "https://rusevaivelina.github.io",
+//   "*",
+// ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        // If a specific origin isn’t found on the list of allowed origins
-        let message =
-          "The CORS policy for this application doesn’t allow access from origin " +
-          origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         // If a specific origin isn’t found on the list of allowed origins
+//         let message =
+//           "The CORS policy for this application doesn’t allow access from origin " +
+//           origin;
+//         return callback(new Error(message), false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
 
 //adding CORS to allow access from various domains:
 //const cors = require('cors');
